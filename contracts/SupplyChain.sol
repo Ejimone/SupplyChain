@@ -340,7 +340,7 @@ contract SupplyChain is Ownable {
     event WarehouseDeleted(uint256 indexed warehouseId);
 
     SupplyChainState public currentState;
-    modifier onlyOwner() {
+    modifier onlyOwner() override {
         require(msg.sender == owner(), "Only owner can call this function");
         _;
     }
@@ -381,6 +381,87 @@ contract SupplyChain is Ownable {
         _;
     }
     // Helper functions for modifiers
+    function isConsumer(address _address) internal view returns (bool) {
+        for (uint i = 0; i < consumers.length; i++) {
+            if (consumers[i].walletAddress == _address) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function isProducer(address _address) internal view returns (bool) {
+        for (uint i = 0; i < producers.length; i++) {
+            if (producers[i].producerAddress == _address) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function isProcessor(address _address) internal view returns (bool) {
+        for (uint i = 0; i < processors.length; i++) {
+            if (processors[i].processorAddress == _address) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function isRetailer(address _address) internal view returns (bool) {
+        for (uint i = 0; i < retailers.length; i++) {
+            if (retailers[i].retailerAddress == _address) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function isLogistics(address _address) internal view returns (bool) {
+        for (uint i = 0; i < logistics.length; i++) {
+            if (logistics[i].logisticsAddress == _address) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function isDriver(address _address) internal view returns (bool) {
+        for (uint i = 0; i < drivers.length; i++) {
+            if (drivers[i].driverAddress == _address) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function isImporter(address _address) internal view returns (bool) {
+        for (uint i = 0; i < importers.length; i++) {
+            if (importers[i].importerAddress == _address) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function isDistributor(address _address) internal view returns (bool) {
+        for (uint i = 0; i < distributors.length; i++) {
+            if (distributors[i].distributorAddress == _address) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function isWarehouse(address _address) internal view returns (bool) {
+        for (uint i = 0; i < warehouses.length; i++) {
+            if (warehouses[i].warehouseAddress == _address) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     function isParticipantActive(address participant) internal view returns (bool) {
         // Implementation will check if the participant is active in any role
         return true; // Placeholder implementation
