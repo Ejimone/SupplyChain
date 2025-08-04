@@ -138,6 +138,15 @@ contract SupplyChain is Ownable {
         uint256 totalAmount;
     }
 
+    Consumer[] public consumers;
+    Processor[] public processors;
+    Retailer[] public retailers;
+    Logistics[] public logistics;
+    Driver[] public drivers;
+    Importer[] public importers;
+    Distributor[] public distributors;
+    Warehouse[] public warehouses;
+    Producer[] public producers;
 
 
     /**
