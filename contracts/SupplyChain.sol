@@ -521,4 +521,21 @@ contract SupplyChain is Ownable {
         require(!isProductSold(msg.sender), "Only unsold products can call this function");
         _;
     }
+
+
+
+
+
+    modifier onlyInTransit() {
+        require(currentState == SupplyChainState.InTransit, "Only in transit state can call this function");
+        _;
+    }
+    modifier onlyProcessed() {
+        require(currentState == SupplyChainState.Processed, "Only processed state can call this function");
+        _;
+    }
+    modifier onlyBeingProcessed() {
+        require(currentState == SupplyChainState.IsBeingProcessed, "Only being processed state can call this function");
+        _;
+    }
 }
