@@ -91,6 +91,38 @@ contract SupplyChain is Ownable {
         uint256 totalRevenue;
         address payable driverAddress;
     }
+    struct Importer {
+        string name;
+        string location;
+        uint256 id;
+        bool isActive;
+        Product[] products;
+        uint256 totalImported;
+        uint256 totalRevenue;
+        address payable importerAddress;
+    }
+
+    struct Distributor {
+        string name;
+        string location;
+        uint256 id;
+        bool isActive;
+        Product[] products;
+        uint256 totalDistributed;
+        uint256 totalRevenue;
+        address payable distributorAddress;
+    }
+
+    struct Warehouse {
+        string name;
+        string location;
+        uint256 id;
+        bool isActive;
+        Product[] products;
+        uint256 totalStored;
+        uint256 totalRevenue;
+        address payable warehouseAddress;
+    }
 
 
     struct Payment {
