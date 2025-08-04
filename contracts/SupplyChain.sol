@@ -139,5 +139,25 @@ contract SupplyChain is Ownable {
     }
 
 
+
+    /**
+
+    there will be different states for the supply chain process, such as:
+    intransit
+    processed
+    isbeingprocessed
+    isAvailable
+    isDelivered
+    isSold
+    isActive
+    isGoodForSale
+    isAvailableForSale
+    isAvailableForPurchase
+    isAvailableForDelivery
+    isAvailableForProcessing
+    isAvailableForRetail
+    isAvailableForLogistics
+    isAvailableForImport
+     */
 }
 
