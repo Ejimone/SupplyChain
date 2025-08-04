@@ -4,4 +4,29 @@ pragma solidity ^0.8.0;
 A supply chain is the entire network of individuals, organizations, resources, activities, and technology involved in the creation and sale of a product. It's the journey from the very first raw material to the final product in a customer's hands.
  */
 
-contract SupplyChain {}
+contract SupplyChain {
+    struct Producer {
+        string name;
+        string location;
+        uint256 id;
+        bool isActive;
+        Product[] products;
+    }
+    struct Product {
+        string name;
+        uint256 id;
+        uint256 producerId;
+        uint256 price;
+        bool isAvailable;
+    }
+    struct Consumer {
+        string name;
+        string location;
+        uint256 id;
+        bool isActive;
+        string[] purchasedProducts;
+        uint256 totalSpent;
+        uint256 walletBalance;
+        address payable walletAddress;
+    }
+}
