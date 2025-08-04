@@ -187,7 +187,7 @@ contract SupplyChain is Ownable {
         IsAvailableForProcessing,
         IsAvailableForRetail,
         IsAvailableForLogistics,
-        IsAvailableForImport,
+        IsAvailableForImport
     }
 
     SupplyChainState public currentState;
