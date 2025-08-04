@@ -4,6 +4,7 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 contract SupplyChain is Ownable {
+    bool public isActive;
     constructor() Ownable(msg.sender) {}
     struct Producer {
         string name;
@@ -339,4 +340,104 @@ contract SupplyChain is Ownable {
     event WarehouseDeleted(uint256 indexed warehouseId);
 
     SupplyChainState public currentState;
+    modifier onlyOwner() {
+        require(msg.sender == owner(), "Only owner can call this function");
+        _;
+    }
+    modifier onlyConsumer() {
+        require(isConsumer(msg.sender), "Only consumer can call this function");
+        _;
+    }
+    modifier onlyProducer() {
+        require(isProducer(msg.sender), "Only producer can call this function");
+        _;
+        }
+    modifier onlyProcessor() {
+        require(isProcessor(msg.sender), "Only processor can call this function");
+        _;
+    }
+    modifier onlyRetailer() {
+        require(isRetailer(msg.sender), "Only retailer can call this function");
+        _;
+    }
+    modifier onlyLogistics() {
+        require(isLogistics(msg.sender), "Only logistics can call this function");
+        _;
+    }
+    modifier onlyDriver() {
+        require(isDriver(msg.sender), "Only driver can call this function");
+        _;
+    }
+    modifier onlyImporter() {
+        require(isImporter(msg.sender), "Only importer can call this function");
+        _;
+    }
+    modifier onlyDistributor() {
+        require(isDistributor(msg.sender), "Only distributor can call this function");
+        _;
+    }
+    modifier onlyWarehouse() {
+        require(isWarehouse(msg.sender), "Only warehouse can call this function");
+        _;
+    }
+    // Helper functions for modifiers
+    function isParticipantActive(address participant) internal view returns (bool) {
+        // Implementation will check if the participant is active in any role
+        return true; // Placeholder implementation
+    }
+
+    function isProductAvailable(address product) internal view returns (bool) {
+        // Implementation will check if the product is available
+        return true; // Placeholder implementation
+    }
+
+    function isProductDelivered(address product) internal view returns (bool) {
+        // Implementation will check if the product is delivered
+        return true; // Placeholder implementation
+    }
+
+    function isProductSold(address product) internal view returns (bool) {
+        // Implementation will check if the product is sold
+        return true; // Placeholder implementation
+    }
+
+    modifier onlyActive() {
+        require(isParticipantActive(msg.sender), "Only active participants can call this function");
+        _;
+    }
+
+    modifier onlyInactive() {
+        require(!isParticipantActive(msg.sender), "Only inactive participants can call this function");
+        _;
+    }
+
+    modifier onlyAvailable() {
+        require(isProductAvailable(msg.sender), "Only available products can call this function");
+        _;
+    }
+
+    modifier onlyNotAvailable() {
+        require(!isProductAvailable(msg.sender), "Only unavailable products can call this function");
+        _;
+    }
+
+    modifier onlyDelivered() {
+        require(isProductDelivered(msg.sender), "Only delivered products can call this function");
+        _;
+    }
+
+    modifier onlyNotDelivered() {
+        require(!isProductDelivered(msg.sender), "Only undelivered products can call this function");
+        _;
+    }
+
+    modifier onlySold() {
+        require(isProductSold(msg.sender), "Only sold products can call this function");
+        _;
+    }
+
+    modifier onlyNotSold() {
+        require(!isProductSold(msg.sender), "Only unsold products can call this function");
+        _;
+    }
 }
