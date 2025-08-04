@@ -58,4 +58,22 @@ contract SupplyChain {
         uint256 productPrice;
         address payable retailerAddress;
     }
+
+    struct Logistics {
+        string name;
+        string currentLocation;
+        string destinationLocation;
+        uint256 estimatedDeliveryTime; // in hours
+        uint256 deliveryFee;
+        uint256 itemId;
+        bool isActive;
+        Product[] products;
+        uint256 totalDelivered;
+        uint256 totalRevenue;
+        address payable logisticsAddress;
+        bool isDelivered;
+        Product[] deliveredProducts;
+        Producer[] producers;
+        Consumer[] consumers;
+    }
 }
