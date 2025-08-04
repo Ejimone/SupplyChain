@@ -3,8 +3,10 @@ pragma solidity ^0.8.0;
 /*
 A supply chain is the entire network of individuals, organizations, resources, activities, and technology involved in the creation and sale of a product. It's the journey from the very first raw material to the final product in a customer's hands.
  */
-
-contract SupplyChain {
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+contract SupplyChain is Ownable {
+    constructor() Ownable(msg.sender) {}
     struct Producer {
         string name;
         string location;
@@ -75,5 +77,18 @@ contract SupplyChain {
         Product[] deliveredProducts;
         Producer[] producers;
         Consumer[] consumers;
+        Processor[] processors;
+        Retailer[] retailers;
+        Driver[] drivers;
+    }
+    struct Driver {
+        string name;
+        string licenseNumber;
+        uint256 id;
+        bool isActive;
+        Logistics[] logisticsTasks;
+        uint256 totalDelivered;
+        uint256 totalRevenue;
+        address payable driverAddress;
     }
 }
