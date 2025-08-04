@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
-/*
-A supply chain is the entire network of individuals, organizations, resources, activities, and technology involved in the creation and sale of a product. It's the journey from the very first raw material to the final product in a customer's hands.
- */
+
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 contract SupplyChain is Ownable {
@@ -189,6 +187,156 @@ contract SupplyChain is Ownable {
         IsAvailableForLogistics,
         IsAvailableForImport
     }
+
+    event SupplyChainEvent(
+        string indexed eventType,
+        uint256 indexed itemId,
+        address indexed actor,
+        string details,
+        SupplyChainState state,
+        uint256 timestamp
+    );
+
+    event ProductAdded(
+        uint256 indexed productId,
+        string productName,
+        uint256 producerId,
+        uint256 price,
+        bool isAvailable
+    );
+
+    event ProductUpdated(
+        uint256 indexed productId,
+        string productName,
+        uint256 producerId,
+        uint256 price,
+        bool isAvailable
+    );
+    event ProductDeleted(uint256 indexed productId, uint256 producerId);
+    event ConsumerAdded(
+        uint256 indexed consumerId,
+        string consumerName,
+        string location,
+        address consumerAddress
+    );
+    event ConsumerUpdated(
+        uint256 indexed consumerId,
+        string consumerName,
+        string location,
+        address consumerAddress
+    );
+    event ConsumerDeleted(uint256 indexed consumerId);
+    event ProducerAdded(
+        uint256 indexed producerId,
+        string producerName,
+        string location,
+        address producerAddress 
+    );
+    event ProducerUpdated(
+        uint256 indexed producerId,
+        string producerName,
+        string location,
+        address producerAddress
+    );
+    event ProducerDeleted(uint256 indexed producerId);
+
+    event ProcessorAdded(
+        uint256 indexed processorId,
+        string processorName,
+        string location,
+        address processorAddress
+    );
+    event ProcessorUpdated(
+        uint256 indexed processorId,
+        string processorName,
+        string location,
+        address processorAddress
+    );
+    event ProcessorDeleted(uint256 indexed processorId);
+    event RetailerAdded(
+        uint256 indexed retailerId,
+        string retailerName,
+        string location,
+        address retailerAddress
+    );
+    event RetailerUpdated(
+        uint256 indexed retailerId,
+        string retailerName,
+        string location,
+        address retailerAddress
+    );
+    event RetailerDeleted(uint256 indexed retailerId);
+    event LogisticsAdded(
+        uint256 indexed logisticsId,
+        string logisticsName,
+        string currentLocation,
+        string destinationLocation,
+        uint256 estimatedDeliveryTime,
+        uint256 deliveryFee,
+        address logisticsAddress
+    );
+    event LogisticsUpdated(
+        uint256 indexed logisticsId,
+        string logisticsName,
+        string currentLocation,
+        string destinationLocation,
+        uint256 estimatedDeliveryTime,
+        uint256 deliveryFee,
+        address logisticsAddress
+    );
+    event LogisticsDeleted(uint256 indexed logisticsId);
+    event DriverAdded(
+        uint256 indexed driverId,
+        string driverName,
+        string licenseNumber,
+        address driverAddress
+    );
+    event DriverUpdated(
+        uint256 indexed driverId,
+        string driverName,
+        string licenseNumber,
+        address driverAddress
+    );
+    event DriverDeleted(uint256 indexed driverId);
+    event ImporterAdded(
+        uint256 indexed importerId,
+        string importerName,
+        string location,
+        address importerAddress
+    );
+    event ImporterUpdated(
+        uint256 indexed importerId,
+        string importerName,
+        string location,
+        address importerAddress
+    );
+    event ImporterDeleted(uint256 indexed importerId);
+    event DistributorAdded(
+        uint256 indexed distributorId,
+        string distributorName,
+        string location,
+        address distributorAddress
+    );
+    event DistributorUpdated(
+        uint256 indexed distributorId,
+        string distributorName,
+        string location,
+        address distributorAddress
+    );
+    event DistributorDeleted(uint256 indexed distributorId);
+    event WarehouseAdded(
+        uint256 indexed warehouseId,
+        string warehouseName,
+        string location,
+        address warehouseAddress
+    );
+    event WarehouseUpdated(
+        uint256 indexed warehouseId,
+        string warehouseName,
+        string location,
+        address warehouseAddress
+    );
+    event WarehouseDeleted(uint256 indexed warehouseId);
 
     SupplyChainState public currentState;
 }
