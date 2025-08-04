@@ -91,4 +91,21 @@ contract SupplyChain is Ownable {
         uint256 totalRevenue;
         address payable driverAddress;
     }
+
+
+    struct Payment {
+        address from;
+        address to;
+        uint256 amount;
+        uint256 timestamp;
+        string description;
+    }
+    struct PaymentHistory {
+        Payment[] payments;
+        uint256 totalPayments;
+        uint256 totalAmount;
+    }
+
+
 }
+
