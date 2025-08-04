@@ -11,6 +11,10 @@ contract SupplyChain {
         uint256 id;
         bool isActive;
         Product[] products;
+        uint256 totalProduced;
+        uint256 totalSold;
+        uint256 totalRevenue;
+        address payable producerAddress;
     }
     struct Product {
         string name;
@@ -28,5 +32,30 @@ contract SupplyChain {
         uint256 totalSpent;
         uint256 walletBalance;
         address payable walletAddress;
+    }
+    struct Processor {
+        string name;
+        string location;
+        uint256 id;
+        bool isActive;
+        Product[] products;
+        uint256 totalProcessed;
+        uint256 totalRevenue;
+        uint256 processingFee;
+        address payable processorAddress;
+        bool isGoodForSale;
+    }
+
+    struct Retailer {
+        string name;
+        string location;
+        uint256 id;
+        bool isActive;
+        Product[] products;
+        uint256 totalSold;
+        uint256 totalRevenue;
+        uint256 retailFee;
+        uint256 productPrice;
+        address payable retailerAddress;
     }
 }
