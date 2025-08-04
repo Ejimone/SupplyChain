@@ -149,6 +149,9 @@ contract SupplyChain is Ownable {
     Producer[] public producers;
 
 
+
+
+
     /**
 
     there will be different states for the supply chain process, such as:
@@ -168,5 +171,24 @@ contract SupplyChain is Ownable {
     isAvailableForLogistics
     isAvailableForImport
      */
-}
 
+    enum SupplyChainState {
+        InTransit,
+        Processed,
+        IsBeingProcessed,
+        IsAvailable,
+        IsDelivered,
+        IsSold,
+        IsActive,
+        IsGoodForSale,
+        IsAvailableForSale,
+        IsAvailableForPurchase,
+        IsAvailableForDelivery,
+        IsAvailableForProcessing,
+        IsAvailableForRetail,
+        IsAvailableForLogistics,
+        IsAvailableForImport,
+    }
+
+    SupplyChainState public currentState;
+}
